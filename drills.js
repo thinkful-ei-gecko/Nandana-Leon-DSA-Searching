@@ -210,7 +210,19 @@ function bfs(tree, values = []) {
 
 // console.log(bfs(bst,values=[]))
 
-const arr = [128, 97, 121, 123, 98, 97, 105]
+const arr2 = [128, 97, 121, 123, 98, 97, 105]
 function maxProfit(arr){
-
+  let difference = 0;
+  let buyDay = 0;
+  let sellDay = 0;
+  for (let i=0; i < arr.length-1; i++) {
+    let tempDiff = arr[i+1] - arr[i];
+    if (tempDiff > difference) {
+      difference = tempDiff;
+      sellDay = i+1;
+      buyDay = i;
+    }
+  }
+  console.log(`The best day to buy is Day ${buyDay+1} (${arr[buyDay]}) and the best day to sell is Day ${sellDay+1} (${arr[sellDay]})`)
 }
+maxProfit(arr2);
